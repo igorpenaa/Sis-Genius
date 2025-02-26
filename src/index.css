@@ -1,0 +1,293 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Import form styles */
+@import './styles/form.css';
+
+@layer base {
+  :root {
+    --genius-primary: #2563eb;
+    --genius-secondary: #f97316;
+  }
+  
+  body {
+    @apply antialiased;
+  }
+
+  /* Custom scrollbar for the sidebar */
+  .sidebar-scrollbar::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  .sidebar-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .sidebar-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 2px;
+  }
+
+  .sidebar-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+  }
+}
+
+/* Mobile menu styles */
+@media (max-width: 500px) {
+  /* Form grid layouts */
+  .form-grid-2,
+  .form-grid-3,
+  .form-grid-4 {
+    @apply grid-cols-1 gap-4 !important;
+  }
+
+  /* Form containers */
+  .form-container {
+    @apply px-4 py-4 !important;
+  }
+
+  /* Form inputs */
+  input[type="text"],
+  input[type="email"],
+  input[type="number"],
+  input[type="tel"],
+  input[type="date"],
+  input[type="password"],
+  select,
+  textarea {
+    @apply text-base !important;
+  }
+
+  /* Form labels */
+  label {
+    @apply text-sm !important;
+  }
+
+  /* Form buttons */
+  .form-buttons {
+    @apply flex-col space-x-0 space-y-3 !important;
+  }
+
+  .form-buttons button {
+    @apply w-full !important;
+  }
+
+  .mobile-menu {
+    height: calc(100vh - 4rem);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .mobile-menu::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  .mobile-menu::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .mobile-menu::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 2px;
+  }
+
+  .mobile-menu::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+  }
+}
+
+/* Sidebar scrollbar */
+.sidebar-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+}
+
+.sidebar-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.sidebar-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.sidebar-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 2px;
+}
+
+.sidebar-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.calculator-container {
+  @apply max-w-2xl mx-auto p-8 rounded-2xl;
+  background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 100%);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.input-field {
+  @apply mt-1 block w-full rounded-lg border border-gray-300 px-4 py-3 shadow-sm
+  focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50;
+}
+
+.select-field {
+  @apply block w-full rounded-lg border border-gray-300 px-4 py-3 shadow-sm bg-white
+  focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50;
+}
+
+.form-label {
+  @apply block text-sm font-semibold text-gray-700 mb-2;
+}
+
+.radio-label {
+  @apply flex cursor-pointer items-center rounded-lg border border-gray-200 p-4 transition-all
+  hover:border-blue-500 hover:bg-blue-50;
+}
+
+.radio-label.selected {
+  @apply border-blue-500 bg-blue-50;
+}
+
+.btn-primary {
+  @apply px-4 py-2 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-lg 
+         hover:from-blue-700 hover:to-blue-800 transition-all shadow-lg shadow-blue-200/50
+         focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2;
+}
+
+.btn-secondary {
+  @apply px-4 py-2 bg-gradient-to-r from-orange-500 to-orange-600 text-white rounded-lg
+         hover:from-orange-600 hover:to-orange-700 transition-all shadow-lg shadow-orange-200/50
+         focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2;
+}
+
+.btn-danger {
+  @apply rounded-lg bg-gradient-to-r from-red-500 to-red-600 px-4 py-2 text-white shadow-md
+  transition-all hover:from-red-600 hover:to-red-700
+  focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50;
+}
+
+/* Toggle Switch Styles */
+.toggle-checkbox:checked {
+  @apply right-0 border-green-500;
+  transform: translateX(100%);
+}
+
+.toggle-checkbox:checked + .toggle-label {
+  @apply bg-green-500;
+}
+
+.toggle-checkbox {
+  @apply absolute block w-5 h-5 rounded-full bg-white border-2 border-gray-300 appearance-none cursor-pointer transition-all duration-200 transform;
+  left: 0;
+}
+
+.toggle-label {
+  @apply block overflow-hidden h-5 rounded-full bg-gray-300 cursor-pointer transition-colors duration-200;
+}
+
+.result-card {
+  @apply overflow-hidden rounded-lg bg-white p-6 shadow-lg;
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+}
+
+/* Estilização específica para inputs e selects */
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="tel"],
+input[type="date"],
+select {
+  @apply w-full rounded-lg border border-gray-300 px-4 py-3 shadow-sm
+  focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50
+  bg-white transition-all duration-200;
+}
+
+/* Estilização para labels */
+label {
+  @apply block text-sm font-semibold text-gray-700 mb-2;
+}
+
+/* Estilização para grupos de campos */
+.form-group {
+  @apply mb-6;
+}
+
+/* Estilização para botões de ação */
+.action-button {
+  @apply inline-flex items-center justify-center px-6 py-3 rounded-lg font-medium
+  transition-all duration-200 shadow-lg;
+}
+
+.action-button.primary {
+  @apply bg-gradient-to-r from-blue-600 to-blue-700 text-white
+  hover:from-blue-700 hover:to-blue-800;
+}
+
+.action-button.secondary {
+  @apply bg-gradient-to-r from-gray-100 to-gray-200 text-gray-700
+  hover:from-gray-200 hover:to-gray-300;
+}
+
+/* Estilização para dropdowns */
+.dropdown {
+  @apply relative inline-block;
+}
+
+.dropdown-content {
+  @apply absolute z-50 w-full mt-1 rounded-lg bg-white shadow-lg
+  border border-gray-100 py-1;
+}
+
+.dropdown-item {
+  @apply px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 cursor-pointer
+  transition-colors duration-150;
+}
+
+.writing-mode-vertical {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+}
+
+.modern-table {
+  @apply w-full border-collapse;
+}
+
+.modern-table th {
+  @apply px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider bg-gray-50/80;
+}
+
+.modern-table td {
+  @apply px-6 py-4 whitespace-nowrap text-sm text-gray-900 border-b border-gray-100;
+}
+
+.modern-table tr:hover {
+  @apply bg-gray-50/80 transition-colors;
+}
+
+.dashboard-card {
+  @apply bg-white rounded-xl shadow-lg overflow-hidden;
+  background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.95) 100%);
+  backdrop-filter: blur(10px);
+}

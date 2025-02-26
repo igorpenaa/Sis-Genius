@@ -1,0 +1,85 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Helper function to check authentication
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    // Service Orders collection rules
+    match /serviceOrders/{serviceOrderId} {
+      allow read: if isAuthenticated();
+      allow create: if isAuthenticated();
+      allow update: if isAuthenticated();
+      allow delete: if isAuthenticated();
+    }
+
+    // Equipment collection rules
+    match /equipment/{equipmentId} {
+      allow read: if isAuthenticated();
+      allow create: if isAuthenticated();
+      allow update: if isAuthenticated();
+      allow delete: if isAuthenticated();
+    }
+
+    // Service Order Checklists collection rules
+    match /serviceOrderChecklists/{checklistId} {
+      allow read: if isAuthenticated();
+      allow create: if isAuthenticated();
+      allow update: if isAuthenticated();
+      allow delete: if isAuthenticated();
+    }
+
+    // Service Order Services collection rules
+    match /serviceOrderServices/{serviceId} {
+      allow read: if isAuthenticated();
+      allow create: if isAuthenticated();
+      allow update: if isAuthenticated();
+      allow delete: if isAuthenticated();
+    }
+
+    // Service Order Products collection rules
+    match /serviceOrderProducts/{productId} {
+      allow read: if isAuthenticated();
+      allow create: if isAuthenticated();
+      allow update: if isAuthenticated();
+      allow delete: if isAuthenticated();
+    }
+
+    // Technical Feedback collection rules
+    match /technicalFeedback/{feedbackId} {
+      allow read: if isAuthenticated();
+      allow create: if isAuthenticated();
+      allow update: if isAuthenticated();
+      allow delete: if isAuthenticated();
+    }
+
+    // Service Order Discounts collection rules
+    match /serviceOrderDiscounts/{discountId} {
+      allow read: if isAuthenticated();
+      allow create: if isAuthenticated();
+      allow update: if isAuthenticated();
+      allow delete: if isAuthenticated();
+    }
+
+    // Helper function to validate checklist data
+    function isValidChecklist(data) {
+      let hasRequiredFields = data.keys().hasAll(['name', 'category', 'subcategory', 'items']);
+      let validName = data.name is string && data.name.size() <= 100;
+      let validCategory = data.category is string;
+      let validSubcategory = data.subcategory is string;
+      let validItems = data.items is list && data.items.size() <= 25;
+      
+      return hasRequiredFields && validName && validCategory && 
+             validSubcategory && validItems;
+    }
+
+    // Checklist collection rules
+    match /checklists/{checklistId} {
+      allow read: if isAuthenticated();
+      allow create: if isAuthenticated() && isValidChecklist(request.resource.data);
+      allow update: if isAuthenticated() && isValidChecklist(request.resource.data);
+      allow delete: if isAuthenticated();
+    }
+  }
+}
