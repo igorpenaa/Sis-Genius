@@ -1,9 +1,11 @@
 [build]
-  command = "npm run build"
+  command = "rm -rf node_modules package-lock.json && npm install && npm run build"
   publish = "dist"
 
 [build.environment]
-  NODE_VERSION = "20"
+  NODE_VERSION = "18.17.0"
+  NPM_VERSION = "9.6.7"
+  NPM_FLAGS = "--no-optional"
 
 # Handle SPA routing
 [[redirects]]
